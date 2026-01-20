@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Influencer Search Results | Influex</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25d0c8",
+                        "background-light": "#fafaf9",
+                        "background-dark": "#242428",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .custom-shadow { box-shadow: 0 4px 20px -2px rgba(224, 231, 235, 0.4); }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -4px rgba(224, 231, 235, 0.6); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #25d0c8;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen font-display transition-colors duration-300">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-[#f0f4f4] bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-12 py-3">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-[#121717] dark:text-white">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">bubble_chart</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">Influex</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-primary text-sm font-semibold" href="#">Discover</a>
+<a class="text-[#658684] dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Campaigns</a>
+<a class="text-[#658684] dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Lists</a>
+<a class="text-[#658684] dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex items-center gap-2 px-4 h-10 bg-primary/10 text-primary rounded-xl text-sm font-bold hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-lg">bolt</span>
+                    Upgrade
+                </button>
+<div class="flex items-center gap-2 border-l border-gray-200 dark:border-gray-700 ml-2 pl-4">
+<button class="p-2 text-[#658684] dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-9 rounded-full bg-cover bg-center border-2 border-white dark:border-gray-700" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkBsVL_eMY3pANC8DXZXytANXR35u2cpQPd8OUIOUZRPM0eyYCDXz-sRYSQmNjddJMj0MPFoXZlK6sCn91GSOSbHFjDLP_dktL24KP_BuvfK_866LHawOMxFoY0ScnUJqjS6GZzCPXxbBrKU7ZQrDX1iGfltiXlVSICKlZGFl_uMYGoxcYs0CAgpcgR_j3nqOxvDhQCNXiO2bf6MlqG31ExriVAsj1Z7ccYtQC675zPFuRLg-ILXf8bJDmx0w2V_retqaR2fT5t4E");'></div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto flex gap-8 px-6 lg:px-12 py-8">
+<!-- Sidebar Filters -->
+<aside class="w-72 shrink-0 hidden lg:flex flex-col gap-6">
+<div class="bg-white dark:bg-gray-900 rounded-2xl p-6 custom-shadow border border-[#f0f4f4] dark:border-gray-800">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-[#121717] dark:text-white">Filters</h3>
+<button class="text-xs font-semibold text-primary hover:underline">Reset All</button>
+</div>
+<!-- Platform Section -->
+<div class="mb-8">
+<p class="text-xs font-bold text-[#658684] dark:text-gray-500 uppercase tracking-wider mb-4">Platform</p>
+<div class="space-y-2">
+<label class="flex items-center gap-3 group cursor-pointer">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary size-5 transition-all" type="checkbox"/>
+<span class="text-sm font-medium text-[#121717] dark:text-gray-300 group-hover:text-primary">Instagram</span>
+</label>
+<label class="flex items-center gap-3 group cursor-pointer">
+<input class="rounded border-gray-300 text-primary focus:ring-primary size-5 transition-all" type="checkbox"/>
+<span class="text-sm font-medium text-[#121717] dark:text-gray-300 group-hover:text-primary">TikTok</span>
+</label>
+<label class="flex items-center gap-3 group cursor-pointer">
+<input class="rounded border-gray-300 text-primary focus:ring-primary size-5 transition-all" type="checkbox"/>
+<span class="text-sm font-medium text-[#121717] dark:text-gray-300 group-hover:text-primary">YouTube</span>
+</label>
+</div>
+</div>
+<!-- Followers Slider -->
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<p class="text-xs font-bold text-[#658684] dark:text-gray-500 uppercase tracking-wider">Followers</p>
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">10k - 500k</span>
+</div>
+<div class="relative pt-2 pb-6">
+<input class="w-full h-1.5 bg-[#f0f4f4] dark:bg-gray-800 rounded-lg appearance-none cursor-pointer" max="100" min="1" type="range" value="40"/>
+<div class="flex justify-between mt-2">
+<span class="text-[10px] text-gray-400">1k</span>
+<span class="text-[10px] text-gray-400">1M+</span>
+</div>
+</div>
+</div>
+<!-- Engagement Slider -->
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<p class="text-xs font-bold text-[#658684] dark:text-gray-500 uppercase tracking-wider">Engagement Rate</p>
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">Min 3%</span>
+</div>
+<div class="relative pt-2 pb-6">
+<input class="w-full h-1.5 bg-[#f0f4f4] dark:bg-gray-800 rounded-lg appearance-none cursor-pointer" max="15" min="0" type="range" value="3"/>
+<div class="flex justify-between mt-2">
+<span class="text-[10px] text-gray-400">0%</span>
+<span class="text-[10px] text-gray-400">15%</span>
+</div>
+</div>
+</div>
+<!-- Location Section -->
+<div class="mb-8">
+<p class="text-xs font-bold text-[#658684] dark:text-gray-500 uppercase tracking-wider mb-4">Location</p>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xl">location_pin</span>
+<input class="w-full pl-10 pr-4 py-2 bg-[#f0f4f4] dark:bg-gray-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Search city or country" type="text"/>
+</div>
+</div>
+<!-- Interests -->
+<div>
+<p class="text-xs font-bold text-[#658684] dark:text-gray-500 uppercase tracking-wider mb-4">Interests</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 bg-primary text-white text-[11px] font-bold rounded-full cursor-pointer">Travel</span>
+<span class="px-3 py-1.5 bg-[#f0f4f4] dark:bg-gray-800 text-[#121717] dark:text-gray-300 text-[11px] font-bold rounded-full cursor-pointer hover:bg-gray-200">Fashion</span>
+<span class="px-3 py-1.5 bg-[#f0f4f4] dark:bg-gray-800 text-[#121717] dark:text-gray-300 text-[11px] font-bold rounded-full cursor-pointer hover:bg-gray-200">Tech</span>
+<span class="px-3 py-1.5 bg-[#f0f4f4] dark:bg-gray-800 text-[#121717] dark:text-gray-300 text-[11px] font-bold rounded-full cursor-pointer hover:bg-gray-200">Food</span>
+</div>
+</div>
+</div>
+<button class="w-full py-4 bg-primary text-white font-bold rounded-2xl shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
+                Update Results
+            </button>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-1 flex flex-col gap-6">
+<!-- Search & Control Header -->
+<div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="w-full md:max-w-md relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#658684] group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full pl-12 pr-4 h-14 bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 rounded-2xl custom-shadow focus:ring-2 focus:ring-primary/50 outline-none transition-all" placeholder="Search by name, handle or keyword..." type="text"/>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 h-14 px-6 bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 rounded-2xl text-[#121717] dark:text-white font-bold text-sm custom-shadow hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+                        Save Search
+                    </button>
+<div class="relative flex-1 md:flex-none group">
+<select class="appearance-none h-14 pl-6 pr-12 bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 rounded-2xl text-[#121717] dark:text-white font-bold text-sm custom-shadow focus:ring-2 focus:ring-primary/50 outline-none w-full">
+<option>Sort by: Popularity</option>
+<option>Sort by: Engagement</option>
+<option>Sort by: Followers (High-Low)</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between px-2">
+<p class="text-[#658684] dark:text-gray-400 text-sm">Showing <span class="text-[#121717] dark:text-white font-bold">1,240</span> results</p>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 bg-primary/10 text-primary px-3 py-1 rounded-lg text-xs font-bold">
+                        Instagram <button class="material-symbols-outlined text-xs">close</button>
+</span>
+<span class="flex items-center gap-1 bg-primary/10 text-primary px-3 py-1 rounded-lg text-xs font-bold">
+                        Travel <button class="material-symbols-outlined text-xs">close</button>
+</span>
+</div>
+</div>
+<!-- Influencer Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-gray-900 rounded-[2rem] p-6 border border-[#f0f4f4] dark:border-gray-800 custom-shadow transition-all card-hover group cursor-pointer">
+<div class="relative mb-6">
+<div class="aspect-square rounded-[1.5rem] bg-cover bg-center overflow-hidden" data-alt="Fashion influencer posing in urban setting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUsqZXvm1yUyG9D3O3Te_2qpQ0HV0Aff-DFnU8Jv4xFyHaQk9VSxWgOknyfllopwVR4nVtEMxGY1sRUJ12KTapVwWjPjrp-M7N8QtM0ZCRg5N1IqzGQ1OtYlL39ZMZ9PMRZLbA2HZ__zoQZDWhymnrOpgGdCZPH_CBFWIJcgSGPdhNqxKkmnivrUGtIfNSmTjjqb3GBY9MduH22h2qDSVb2zzEfCr2OOZoqqsUU9Jn5B9mtbe6XKj_bKTMoG0nyZZpsEBxpE4eFjU");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+<span class="text-white text-xs font-medium">View Portfolio</span>
+</div>
+</div>
+<button class="absolute top-4 right-4 size-10 bg-white/90 backdrop-blur rounded-xl flex items-center justify-center text-[#121717] hover:bg-primary hover:text-white transition-all shadow-lg">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 mb-4">
+<div class="flex items-center gap-1.5">
+<h4 class="text-lg font-bold text-[#121717] dark:text-white tracking-tight leading-tight">Elena Moretti</h4>
+<span class="material-symbols-outlined text-primary text-base fill-1">verified</span>
+</div>
+<p class="text-sm text-[#658684] font-medium">@elenatravels</p>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-[#f0f4f4] dark:border-gray-800 mb-6">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-[#658684] font-bold mb-1">Followers</p>
+<p class="text-lg font-bold text-[#121717] dark:text-white">245.8k</p>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-[#658684] font-bold mb-1">Eng. Rate</p>
+<p class="text-lg font-bold text-primary">4.2%</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-[#fdf2f8] text-pink-600 text-[10px] font-bold rounded-full">Fashion</span>
+<span class="px-3 py-1 bg-[#eff6ff] text-blue-600 text-[10px] font-bold rounded-full">Travel</span>
+</div>
+<button class="w-full py-3.5 bg-background-light dark:bg-gray-800 text-[#121717] dark:text-white text-sm font-bold rounded-xl border border-[#f0f4f4] dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                        View Profile
+                    </button>
+</div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-gray-900 rounded-[2rem] p-6 border border-[#f0f4f4] dark:border-gray-800 custom-shadow transition-all card-hover group cursor-pointer">
+<div class="relative mb-6">
+<div class="aspect-square rounded-[1.5rem] bg-cover bg-center overflow-hidden" data-alt="Male tech influencer with minimalist setup" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCC_Fj5mOEr58QzU7l77N---7vhtNCQBXgdOHGlsIzDQ3Xml2Rqozft-6UOFz_aK0dNd-E6Khg3jetjolDkoXQ2MgLdzaOSrESmTSDknHnPbMvGkJxNktFXQdXgUYVYOGpQ5DVp8ZJImZfwWd8R4sNIdn45dh2RgiaSF_2sYmLHvNc5h3vFNoDnfaQDLgeACvEA3NmZMaz0dZqbhIGLdWQ-9VMC5Ey7yEdI5euzZt0Yixd05w8qJETZZmYAe2BaHJSEMltSpPLITkE");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+<span class="text-white text-xs font-medium">View Portfolio</span>
+</div>
+</div>
+<button class="absolute top-4 right-4 size-10 bg-white/90 backdrop-blur rounded-xl flex items-center justify-center text-[#121717] hover:bg-primary hover:text-white transition-all shadow-lg">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 mb-4">
+<div class="flex items-center gap-1.5">
+<h4 class="text-lg font-bold text-[#121717] dark:text-white tracking-tight leading-tight">Julian Vance</h4>
+</div>
+<p class="text-sm text-[#658684] font-medium">@julian.tech</p>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-[#f0f4f4] dark:border-gray-800 mb-6">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-[#658684] font-bold mb-1">Followers</p>
+<p class="text-lg font-bold text-[#121717] dark:text-white">128.4k</p>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-[#658684] font-bold mb-1">Eng. Rate</p>
+<p class="text-lg font-bold text-primary">5.1%</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-[#f0fdf4] text-green-600 text-[10px] font-bold rounded-full">Tech</span>
+<span class="px-3 py-1 bg-[#fdf4ff] text-purple-600 text-[10px] font-bold rounded-full">Design</span>
+</div>
+<button class="w-full py-3.5 bg-background-light dark:bg-gray-800 text-[#121717] dark:text-white text-sm font-bold rounded-xl border border-[#f0f4f4] dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                        View Profile
+                    </button>
+</div>
+<!-- Card 3 -->
+<div class="bg-white dark:bg-gray-900 rounded-[2rem] p-6 border border-[#f0f4f4] dark:border-gray-800 custom-shadow transition-all card-hover group cursor-pointer">
+<div class="relative mb-6">
+<div class="aspect-square rounded-[1.5rem] bg-cover bg-center overflow-hidden" data-alt="Lifestyle influencer smiling outdoors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB_oAGMKwjrGsquXuloMQz6JwETry-fAnfpviI2CtAAmdz1go1_057FfUIPHF7E_Fsk_2zrmmnvvqZWKhW1Y9OKcQZXxNmUVmeLHCh5RJX6PAi-6qfOrwO7rlO9E_-Fn9GhhJ9l_sbiHKnbC1ztbBB5uWB2w9p2ExPau4MdFXqLUoJHcNzD0BZPYnPpUw_puWzJltWkddhmoxWH5j5KicQC9vSFXvCYC5QNaJ8KjCYbmAgFmW4PMWALO9sXs29h35qVn0FY0t678Mc");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+<span class="text-white text-xs font-medium">View Portfolio</span>
+</div>
+</div>
+<button class="absolute top-4 right-4 size-10 bg-white/90 backdrop-blur rounded-xl flex items-center justify-center text-[#121717] hover:bg-primary hover:text-white transition-all shadow-lg">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 mb-4">
+<div class="flex items-center gap-1.5">
+<h4 class="text-lg font-bold text-[#121717] dark:text-white tracking-tight leading-tight">Sarah Jenks</h4>
+<span class="material-symbols-outlined text-primary text-base fill-1">verified</span>
+</div>
+<p class="text-sm text-[#658684] font-medium">@sarahjenks_style</p>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-[#f0f4f4] dark:border-gray-800 mb-6">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-[#658684] font-bold mb-1">Followers</p>
+<p class="text-lg font-bold text-[#121717] dark:text-white">42.2k</p>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-[#658684] font-bold mb-1">Eng. Rate</p>
+<p class="text-lg font-bold text-primary">8.4%</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-[#fff7ed] text-orange-600 text-[10px] font-bold rounded-full">Foodie</span>
+<span class="px-3 py-1 bg-[#fdf2f8] text-pink-600 text-[10px] font-bold rounded-full">Home</span>
+</div>
+<button class="w-full py-3.5 bg-background-light dark:bg-gray-800 text-[#121717] dark:text-white text-sm font-bold rounded-xl border border-[#f0f4f4] dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                        View Profile
+                    </button>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-8 flex items-center justify-center gap-2">
+<button class="size-10 flex items-center justify-center rounded-xl bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 text-gray-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-xl bg-primary text-white font-bold">1</button>
+<button class="size-10 flex items-center justify-center rounded-xl bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 text-[#121717] dark:text-gray-300 font-bold hover:border-primary transition-all">2</button>
+<button class="size-10 flex items-center justify-center rounded-xl bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 text-[#121717] dark:text-gray-300 font-bold hover:border-primary transition-all">3</button>
+<span class="px-2 text-gray-400">...</span>
+<button class="size-10 flex items-center justify-center rounded-xl bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 text-[#121717] dark:text-gray-300 font-bold hover:border-primary transition-all">12</button>
+<button class="size-10 flex items-center justify-center rounded-xl bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 text-gray-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Floating Help Button (Surprise element) -->
+<div class="fixed bottom-8 right-8">
+<button class="size-14 bg-[#121717] dark:bg-white text-white dark:text-[#121717] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+</div>
+</body></html>

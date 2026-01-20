@@ -1,330 +1,265 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="scroll-smooth" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Influencer Search Results | Influex</title>
+<title>Influex | Influencer Marketing &amp; Campaign Planning</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#25d0c8",
-                        "background-light": "#fafaf9",
-                        "background-dark": "#242428",
-                    },
-                    fontFamily: {
-                        "display": ["Manrope", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.5rem",
-                        "lg": "1rem",
-                        "xl": "1.5rem",
-                        "full": "9999px"
-                    },
-                },
-            },
+<style type="text/tailwindcss">
+        :root {
+            --bg-light: #fdfdfd;
+            --soft-blue: #eff6ff;
+            --soft-pink: #fff1f2;
+            --soft-yellow: #fefce8;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --accent: #2563eb;
         }
-    </script>
-<style>
-        body { font-family: 'Manrope', sans-serif; }
-        .custom-shadow { box-shadow: 0 4px 20px -2px rgba(224, 231, 235, 0.4); }
-        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -4px rgba(224, 231, 235, 0.6); }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            background: #25d0c8;
-            cursor: pointer;
-            border-radius: 50%;
-            border: 2px solid white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+        .nav-link {
+            @apply text-sm font-medium text-gray-600 hover:text-black transition-colors;
         }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark min-h-screen font-display transition-colors duration-300">
-<!-- Top Navigation -->
-<header class="sticky top-0 z-50 w-full border-b border-[#f0f4f4] bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-12 py-3">
-<div class="max-w-[1440px] mx-auto flex items-center justify-between">
-<div class="flex items-center gap-8">
-<div class="flex items-center gap-2 text-[#121717] dark:text-white">
-<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
-<span class="material-symbols-outlined text-xl">bubble_chart</span>
+<body class="antialiased">
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<a class="text-xl font-bold tracking-tight text-blue-600" href="#">INFLUEX</a>
+<div class="hidden lg:flex items-center gap-8">
+<a class="nav-link" href="search.html">Find Creators</a>
+<a class="nav-link" href="#">Analyze Profiles</a>
+<a class="nav-link" href="#">Monitor Campaigns</a>
+<a class="nav-link" href="#">Resources</a>
 </div>
-<h2 class="text-xl font-bold tracking-tight">Influex</h2>
-</div>
-<nav class="hidden md:flex items-center gap-6">
-<a class="text-primary text-sm font-semibold" href="#">Discover</a>
-<a class="text-[#658684] dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Campaigns</a>
-<a class="text-[#658684] dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Lists</a>
-<a class="text-[#658684] dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Reports</a>
-</nav>
 </div>
 <div class="flex items-center gap-4">
-<button class="hidden sm:flex items-center gap-2 px-4 h-10 bg-primary/10 text-primary rounded-xl text-sm font-bold hover:bg-primary/20 transition-colors">
-<span class="material-symbols-outlined text-lg">bolt</span>
-                    Upgrade
-                </button>
-<div class="flex items-center gap-2 border-l border-gray-200 dark:border-gray-700 ml-2 pl-4">
-<button class="p-2 text-[#658684] dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
-<span class="material-symbols-outlined">notifications</span>
-</button>
-<div class="size-9 rounded-full bg-cover bg-center border-2 border-white dark:border-gray-700" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkBsVL_eMY3pANC8DXZXytANXR35u2cpQPd8OUIOUZRPM0eyYCDXz-sRYSQmNjddJMj0MPFoXZlK6sCn91GSOSbHFjDLP_dktL24KP_BuvfK_866LHawOMxFoY0ScnUJqjS6GZzCPXxbBrKU7ZQrDX1iGfltiXlVSICKlZGFl_uMYGoxcYs0CAgpcgR_j3nqOxvDhQCNXiO2bf6MlqG31ExriVAsj1Z7ccYtQC675zPFuRLg-ILXf8bJDmx0w2V_retqaR2fT5t4E");'></div>
+<button class="text-sm font-medium text-gray-600 hover:text-black">Login</button>
+<button class="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-all shadow-sm">Get Started</button>
 </div>
 </div>
+</nav>
+<header class="pt-48 pb-32 px-6">
+<div class="max-w-4xl mx-auto text-center">
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 mb-8">
+                Scale Your Influence <br/>With Precision Data
+            </h1>
+<p class="text-xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Influex helps you discover, track, and manage global creator partnerships. Built for teams who prioritize performance over guesswork.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="w-full sm:w-auto bg-black text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-800 transition-all">Start Free Trial</button>
+<button class="w-full sm:w-auto bg-white text-gray-900 border border-gray-200 px-8 py-4 rounded-full font-semibold hover:border-gray-400 transition-all">Book a Demo</button>
+</div>
+<p class="mt-6 text-sm text-gray-400">No credit card required. Free for 14 days.</p>
 </div>
 </header>
-<main class="max-w-[1440px] mx-auto flex gap-8 px-6 lg:px-12 py-8">
-<!-- Sidebar Filters -->
-<aside class="w-72 shrink-0 hidden lg:flex flex-col gap-6">
-<div class="bg-white dark:bg-gray-900 rounded-2xl p-6 custom-shadow border border-[#f0f4f4] dark:border-gray-800">
-<div class="flex items-center justify-between mb-6">
-<h3 class="text-lg font-bold text-[#121717] dark:text-white">Filters</h3>
-<button class="text-xs font-semibold text-primary hover:underline">Reset All</button>
+<section class="py-24 px-6 bg-white">
+<div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+<div class="p-10 rounded-3xl bg-[var(--soft-blue)] border border-blue-50/50">
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-blue-600">search</span>
 </div>
-<!-- Platform Section -->
-<div class="mb-8">
-<p class="text-xs font-bold text-[#658684] dark:text-gray-500 uppercase tracking-wider mb-4">Platform</p>
-<div class="space-y-2">
-<label class="flex items-center gap-3 group cursor-pointer">
-<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary size-5 transition-all" type="checkbox"/>
-<span class="text-sm font-medium text-[#121717] dark:text-gray-300 group-hover:text-primary">Instagram</span>
-</label>
-<label class="flex items-center gap-3 group cursor-pointer">
-<input class="rounded border-gray-300 text-primary focus:ring-primary size-5 transition-all" type="checkbox"/>
-<span class="text-sm font-medium text-[#121717] dark:text-gray-300 group-hover:text-primary">TikTok</span>
-</label>
-<label class="flex items-center gap-3 group cursor-pointer">
-<input class="rounded border-gray-300 text-primary focus:ring-primary size-5 transition-all" type="checkbox"/>
-<span class="text-sm font-medium text-[#121717] dark:text-gray-300 group-hover:text-primary">YouTube</span>
-</label>
+<h3 class="text-2xl font-bold mb-4">Discovery</h3>
+<p class="text-gray-600 leading-relaxed">
+                    Search 50M+ profiles. Filter by engagement, demographics, and real audience quality to find your perfect match.
+                </p>
 </div>
+<div class="p-10 rounded-3xl bg-[var(--soft-pink)] border border-pink-50/50">
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-pink-600">bar_chart</span>
 </div>
-<!-- Followers Slider -->
-<div class="mb-8">
-<div class="flex justify-between items-center mb-4">
-<p class="text-xs font-bold text-[#658684] dark:text-gray-500 uppercase tracking-wider">Followers</p>
-<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">10k - 500k</span>
+<h3 class="text-2xl font-bold mb-4">Analytics</h3>
+<p class="text-gray-600 leading-relaxed">
+                    Instantly analyze any profile's performance. Spot fake followers and see true reach before you spend a dime.
+                </p>
 </div>
-<div class="relative pt-2 pb-6">
-<input class="w-full h-1.5 bg-[#f0f4f4] dark:bg-gray-800 rounded-lg appearance-none cursor-pointer" max="100" min="1" type="range" value="40"/>
-<div class="flex justify-between mt-2">
-<span class="text-[10px] text-gray-400">1k</span>
-<span class="text-[10px] text-gray-400">1M+</span>
+<div class="p-10 rounded-3xl bg-[var(--soft-yellow)] border border-yellow-50/50">
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-yellow-600">monitoring</span>
 </div>
+<h3 class="text-2xl font-bold mb-4">Campaigns</h3>
+<p class="text-gray-600 leading-relaxed">
+                    Monitor mentions and track performance automatically. No more manual screenshots or spreadsheet updates.
+                </p>
 </div>
-</div>
-<!-- Engagement Slider -->
-<div class="mb-8">
-<div class="flex justify-between items-center mb-4">
-<p class="text-xs font-bold text-[#658684] dark:text-gray-500 uppercase tracking-wider">Engagement Rate</p>
-<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">Min 3%</span>
-</div>
-<div class="relative pt-2 pb-6">
-<input class="w-full h-1.5 bg-[#f0f4f4] dark:bg-gray-800 rounded-lg appearance-none cursor-pointer" max="15" min="0" type="range" value="3"/>
-<div class="flex justify-between mt-2">
-<span class="text-[10px] text-gray-400">0%</span>
-<span class="text-[10px] text-gray-400">15%</span>
-</div>
-</div>
-</div>
-<!-- Location Section -->
-<div class="mb-8">
-<p class="text-xs font-bold text-[#658684] dark:text-gray-500 uppercase tracking-wider mb-4">Location</p>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xl">location_pin</span>
-<input class="w-full pl-10 pr-4 py-2 bg-[#f0f4f4] dark:bg-gray-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Search city or country" type="text"/>
-</div>
-</div>
-<!-- Interests -->
-<div>
-<p class="text-xs font-bold text-[#658684] dark:text-gray-500 uppercase tracking-wider mb-4">Interests</p>
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1.5 bg-primary text-white text-[11px] font-bold rounded-full cursor-pointer">Travel</span>
-<span class="px-3 py-1.5 bg-[#f0f4f4] dark:bg-gray-800 text-[#121717] dark:text-gray-300 text-[11px] font-bold rounded-full cursor-pointer hover:bg-gray-200">Fashion</span>
-<span class="px-3 py-1.5 bg-[#f0f4f4] dark:bg-gray-800 text-[#121717] dark:text-gray-300 text-[11px] font-bold rounded-full cursor-pointer hover:bg-gray-200">Tech</span>
-<span class="px-3 py-1.5 bg-[#f0f4f4] dark:bg-gray-800 text-[#121717] dark:text-gray-300 text-[11px] font-bold rounded-full cursor-pointer hover:bg-gray-200">Food</span>
-</div>
-</div>
-</div>
-<button class="w-full py-4 bg-primary text-white font-bold rounded-2xl shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
-                Update Results
-            </button>
-</aside>
-<!-- Main Content Area -->
-<section class="flex-1 flex flex-col gap-6">
-<!-- Search & Control Header -->
-<div class="flex flex-col md:flex-row gap-4 items-center justify-between">
-<div class="w-full md:max-w-md relative group">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#658684] group-focus-within:text-primary transition-colors">search</span>
-<input class="w-full pl-12 pr-4 h-14 bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 rounded-2xl custom-shadow focus:ring-2 focus:ring-primary/50 outline-none transition-all" placeholder="Search by name, handle or keyword..." type="text"/>
-</div>
-<div class="flex items-center gap-3 w-full md:w-auto">
-<button class="flex-1 md:flex-none flex items-center justify-center gap-2 h-14 px-6 bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 rounded-2xl text-[#121717] dark:text-white font-bold text-sm custom-shadow hover:bg-gray-50 transition-colors">
-<span class="material-symbols-outlined">bookmark</span>
-                        Save Search
-                    </button>
-<div class="relative flex-1 md:flex-none group">
-<select class="appearance-none h-14 pl-6 pr-12 bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 rounded-2xl text-[#121717] dark:text-white font-bold text-sm custom-shadow focus:ring-2 focus:ring-primary/50 outline-none w-full">
-<option>Sort by: Popularity</option>
-<option>Sort by: Engagement</option>
-<option>Sort by: Followers (High-Low)</option>
-</select>
-<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
-</div>
-</div>
-</div>
-<div class="flex items-center justify-between px-2">
-<p class="text-[#658684] dark:text-gray-400 text-sm">Showing <span class="text-[#121717] dark:text-white font-bold">1,240</span> results</p>
-<div class="flex gap-2">
-<span class="flex items-center gap-1 bg-primary/10 text-primary px-3 py-1 rounded-lg text-xs font-bold">
-                        Instagram <button class="material-symbols-outlined text-xs">close</button>
-</span>
-<span class="flex items-center gap-1 bg-primary/10 text-primary px-3 py-1 rounded-lg text-xs font-bold">
-                        Travel <button class="material-symbols-outlined text-xs">close</button>
-</span>
-</div>
-</div>
-<!-- Influencer Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-<!-- Card 1 -->
-<div class="bg-white dark:bg-gray-900 rounded-[2rem] p-6 border border-[#f0f4f4] dark:border-gray-800 custom-shadow transition-all card-hover group cursor-pointer">
-<div class="relative mb-6">
-<div class="aspect-square rounded-[1.5rem] bg-cover bg-center overflow-hidden" data-alt="Fashion influencer posing in urban setting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUsqZXvm1yUyG9D3O3Te_2qpQ0HV0Aff-DFnU8Jv4xFyHaQk9VSxWgOknyfllopwVR4nVtEMxGY1sRUJ12KTapVwWjPjrp-M7N8QtM0ZCRg5N1IqzGQ1OtYlL39ZMZ9PMRZLbA2HZ__zoQZDWhymnrOpgGdCZPH_CBFWIJcgSGPdhNqxKkmnivrUGtIfNSmTjjqb3GBY9MduH22h2qDSVb2zzEfCr2OOZoqqsUU9Jn5B9mtbe6XKj_bKTMoG0nyZZpsEBxpE4eFjU");'>
-<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-<span class="text-white text-xs font-medium">View Portfolio</span>
-</div>
-</div>
-<button class="absolute top-4 right-4 size-10 bg-white/90 backdrop-blur rounded-xl flex items-center justify-center text-[#121717] hover:bg-primary hover:text-white transition-all shadow-lg">
-<span class="material-symbols-outlined">add</span>
-</button>
-</div>
-<div class="flex flex-col gap-1 mb-4">
-<div class="flex items-center gap-1.5">
-<h4 class="text-lg font-bold text-[#121717] dark:text-white tracking-tight leading-tight">Elena Moretti</h4>
-<span class="material-symbols-outlined text-primary text-base fill-1">verified</span>
-</div>
-<p class="text-sm text-[#658684] font-medium">@elenatravels</p>
-</div>
-<div class="grid grid-cols-2 gap-4 py-4 border-y border-[#f0f4f4] dark:border-gray-800 mb-6">
-<div>
-<p class="text-[10px] uppercase tracking-widest text-[#658684] font-bold mb-1">Followers</p>
-<p class="text-lg font-bold text-[#121717] dark:text-white">245.8k</p>
-</div>
-<div>
-<p class="text-[10px] uppercase tracking-widest text-[#658684] font-bold mb-1">Eng. Rate</p>
-<p class="text-lg font-bold text-primary">4.2%</p>
-</div>
-</div>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="px-3 py-1 bg-[#fdf2f8] text-pink-600 text-[10px] font-bold rounded-full">Fashion</span>
-<span class="px-3 py-1 bg-[#eff6ff] text-blue-600 text-[10px] font-bold rounded-full">Travel</span>
-</div>
-<button class="w-full py-3.5 bg-background-light dark:bg-gray-800 text-[#121717] dark:text-white text-sm font-bold rounded-xl border border-[#f0f4f4] dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                        View Profile
-                    </button>
-</div>
-<!-- Card 2 -->
-<div class="bg-white dark:bg-gray-900 rounded-[2rem] p-6 border border-[#f0f4f4] dark:border-gray-800 custom-shadow transition-all card-hover group cursor-pointer">
-<div class="relative mb-6">
-<div class="aspect-square rounded-[1.5rem] bg-cover bg-center overflow-hidden" data-alt="Male tech influencer with minimalist setup" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCC_Fj5mOEr58QzU7l77N---7vhtNCQBXgdOHGlsIzDQ3Xml2Rqozft-6UOFz_aK0dNd-E6Khg3jetjolDkoXQ2MgLdzaOSrESmTSDknHnPbMvGkJxNktFXQdXgUYVYOGpQ5DVp8ZJImZfwWd8R4sNIdn45dh2RgiaSF_2sYmLHvNc5h3vFNoDnfaQDLgeACvEA3NmZMaz0dZqbhIGLdWQ-9VMC5Ey7yEdI5euzZt0Yixd05w8qJETZZmYAe2BaHJSEMltSpPLITkE");'>
-<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-<span class="text-white text-xs font-medium">View Portfolio</span>
-</div>
-</div>
-<button class="absolute top-4 right-4 size-10 bg-white/90 backdrop-blur rounded-xl flex items-center justify-center text-[#121717] hover:bg-primary hover:text-white transition-all shadow-lg">
-<span class="material-symbols-outlined">add</span>
-</button>
-</div>
-<div class="flex flex-col gap-1 mb-4">
-<div class="flex items-center gap-1.5">
-<h4 class="text-lg font-bold text-[#121717] dark:text-white tracking-tight leading-tight">Julian Vance</h4>
-</div>
-<p class="text-sm text-[#658684] font-medium">@julian.tech</p>
-</div>
-<div class="grid grid-cols-2 gap-4 py-4 border-y border-[#f0f4f4] dark:border-gray-800 mb-6">
-<div>
-<p class="text-[10px] uppercase tracking-widest text-[#658684] font-bold mb-1">Followers</p>
-<p class="text-lg font-bold text-[#121717] dark:text-white">128.4k</p>
-</div>
-<div>
-<p class="text-[10px] uppercase tracking-widest text-[#658684] font-bold mb-1">Eng. Rate</p>
-<p class="text-lg font-bold text-primary">5.1%</p>
-</div>
-</div>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="px-3 py-1 bg-[#f0fdf4] text-green-600 text-[10px] font-bold rounded-full">Tech</span>
-<span class="px-3 py-1 bg-[#fdf4ff] text-purple-600 text-[10px] font-bold rounded-full">Design</span>
-</div>
-<button class="w-full py-3.5 bg-background-light dark:bg-gray-800 text-[#121717] dark:text-white text-sm font-bold rounded-xl border border-[#f0f4f4] dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                        View Profile
-                    </button>
-</div>
-<!-- Card 3 -->
-<div class="bg-white dark:bg-gray-900 rounded-[2rem] p-6 border border-[#f0f4f4] dark:border-gray-800 custom-shadow transition-all card-hover group cursor-pointer">
-<div class="relative mb-6">
-<div class="aspect-square rounded-[1.5rem] bg-cover bg-center overflow-hidden" data-alt="Lifestyle influencer smiling outdoors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB_oAGMKwjrGsquXuloMQz6JwETry-fAnfpviI2CtAAmdz1go1_057FfUIPHF7E_Fsk_2zrmmnvvqZWKhW1Y9OKcQZXxNmUVmeLHCh5RJX6PAi-6qfOrwO7rlO9E_-Fn9GhhJ9l_sbiHKnbC1ztbBB5uWB2w9p2ExPau4MdFXqLUoJHcNzD0BZPYnPpUw_puWzJltWkddhmoxWH5j5KicQC9vSFXvCYC5QNaJ8KjCYbmAgFmW4PMWALO9sXs29h35qVn0FY0t678Mc");'>
-<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-<span class="text-white text-xs font-medium">View Portfolio</span>
-</div>
-</div>
-<button class="absolute top-4 right-4 size-10 bg-white/90 backdrop-blur rounded-xl flex items-center justify-center text-[#121717] hover:bg-primary hover:text-white transition-all shadow-lg">
-<span class="material-symbols-outlined">add</span>
-</button>
-</div>
-<div class="flex flex-col gap-1 mb-4">
-<div class="flex items-center gap-1.5">
-<h4 class="text-lg font-bold text-[#121717] dark:text-white tracking-tight leading-tight">Sarah Jenks</h4>
-<span class="material-symbols-outlined text-primary text-base fill-1">verified</span>
-</div>
-<p class="text-sm text-[#658684] font-medium">@sarahjenks_style</p>
-</div>
-<div class="grid grid-cols-2 gap-4 py-4 border-y border-[#f0f4f4] dark:border-gray-800 mb-6">
-<div>
-<p class="text-[10px] uppercase tracking-widest text-[#658684] font-bold mb-1">Followers</p>
-<p class="text-lg font-bold text-[#121717] dark:text-white">42.2k</p>
-</div>
-<div>
-<p class="text-[10px] uppercase tracking-widest text-[#658684] font-bold mb-1">Eng. Rate</p>
-<p class="text-lg font-bold text-primary">8.4%</p>
-</div>
-</div>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="px-3 py-1 bg-[#fff7ed] text-orange-600 text-[10px] font-bold rounded-full">Foodie</span>
-<span class="px-3 py-1 bg-[#fdf2f8] text-pink-600 text-[10px] font-bold rounded-full">Home</span>
-</div>
-<button class="w-full py-3.5 bg-background-light dark:bg-gray-800 text-[#121717] dark:text-white text-sm font-bold rounded-xl border border-[#f0f4f4] dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                        View Profile
-                    </button>
-</div>
-</div>
-<!-- Pagination -->
-<div class="mt-8 flex items-center justify-center gap-2">
-<button class="size-10 flex items-center justify-center rounded-xl bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 text-gray-400 hover:text-primary transition-all">
-<span class="material-symbols-outlined">chevron_left</span>
-</button>
-<button class="size-10 flex items-center justify-center rounded-xl bg-primary text-white font-bold">1</button>
-<button class="size-10 flex items-center justify-center rounded-xl bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 text-[#121717] dark:text-gray-300 font-bold hover:border-primary transition-all">2</button>
-<button class="size-10 flex items-center justify-center rounded-xl bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 text-[#121717] dark:text-gray-300 font-bold hover:border-primary transition-all">3</button>
-<span class="px-2 text-gray-400">...</span>
-<button class="size-10 flex items-center justify-center rounded-xl bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 text-[#121717] dark:text-gray-300 font-bold hover:border-primary transition-all">12</button>
-<button class="size-10 flex items-center justify-center rounded-xl bg-white dark:bg-gray-900 border border-[#f0f4f4] dark:border-gray-800 text-gray-400 hover:text-primary transition-all">
-<span class="material-symbols-outlined">chevron_right</span>
-</button>
 </div>
 </section>
-</main>
-<!-- Floating Help Button (Surprise element) -->
-<div class="fixed bottom-8 right-8">
-<button class="size-14 bg-[#121717] dark:bg-white text-white dark:text-[#121717] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
-<span class="material-symbols-outlined">chat_bubble</span>
-</button>
+<section class="py-24 px-6 bg-gray-50/50">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16">
+<h2 class="text-4xl font-bold mb-4">Search the Network</h2>
+<p class="text-gray-500 max-w-xl">Test drive our interface. Refine results by platform, location, and audience metrics.</p>
 </div>
+<div class="flex flex-col lg:flex-row gap-8">
+<div class="lg:w-80 space-y-6">
+<div class="bg-white p-6 rounded-2xl border border-gray-200 card-shadow">
+<label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Platform</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 bg-blue-50 text-blue-700 text-sm font-medium rounded-lg">Instagram</button>
+<button class="px-4 py-2 bg-gray-50 text-gray-600 text-sm font-medium rounded-lg hover:bg-gray-100">TikTok</button>
+<button class="px-4 py-2 bg-gray-50 text-gray-600 text-sm font-medium rounded-lg hover:bg-gray-100">YouTube</button>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-gray-200 card-shadow">
+<label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Min. Engagement</label>
+<input class="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600" type="range" value="65"/>
+<div class="flex justify-between mt-3 text-xs font-medium text-gray-400">
+<span>0%</span>
+<span>10%</span>
+</div>
+</div>
+</div>
+<div class="flex-1 grid md:grid-cols-2 gap-6">
+<div class="bg-white p-5 rounded-2xl border border-gray-200 card-shadow hover:border-blue-200 transition-all flex items-center gap-4">
+<img alt="Creator" class="w-16 h-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkAdrQZmw6519AifzP9nYOQ5SAu4n6w6OgAWSYy_CLlw-SSwVh3_ubUk76z6rEMULecBs8P06PaKp1XO27VEqya8Ys8QLRbt_i9NcUCP1DQcHsHVzNzSZvj2219rj1rtkWKH1w0k_QlJo-sYhmzQomkyXQhnwnb3dR0cDxDB5HqIz7joHTHDeHzWpavndGME7w_0zS_8nLASlQPEONZIw88g7eJ1e_teuvc9vSPNp57IopRmUFU6mRiqcxoWC7J2_4dZBEaEuJMYQ"/>
+<div class="flex-1">
+<h4 class="font-bold text-gray-900">Sarah Jenkins</h4>
+<p class="text-sm text-gray-400 mb-2">@sarah_creates</p>
+<div class="flex gap-4">
+<div>
+<span class="block text-xs text-gray-400 font-medium">Engagement</span>
+<span class="text-sm font-bold text-blue-600">4.8%</span>
+</div>
+<div>
+<span class="block text-xs text-gray-400 font-medium">Reach</span>
+<span class="text-sm font-bold text-blue-600">892k</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-gray-200 card-shadow hover:border-blue-200 transition-all flex items-center gap-4">
+<img alt="Creator" class="w-16 h-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtXiVOr3z1JYO3gH6t7vWKOYzhrwVL0_tJ8sMPwItVOYkFZtwrb5KdXSnhGs8sB8ry667n_dgBHGaCFJG1VHiupgjiyn7qGiSoPNgW4978zszhI1S6dr8CDaQ8_kqFVlj4Y9XHNyQ2W_NOqR6Y1o9TmOHon8jmFsOG7p53HkrNFJobkKSky2_v2Q_OO4Go6Yyn2chbE_2Z-pT5z0J2OitmuYQ5MpRum4okXjAYPw2bE_jM-AhQpLndl2fm9llO2FUK4MVvWBygDZo"/>
+<div class="flex-1">
+<h4 class="font-bold text-gray-900">Marcus Vibe</h4>
+<p class="text-sm text-gray-400 mb-2">@marcus_vibe</p>
+<div class="flex gap-4">
+<div>
+<span class="block text-xs text-gray-400 font-medium">Engagement</span>
+<span class="text-sm font-bold text-green-600">6.2%</span>
+</div>
+<div>
+<span class="block text-xs text-gray-400 font-medium">Reach</span>
+<span class="text-sm font-bold text-green-600">1.2M</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-gray-200 card-shadow hover:border-blue-200 transition-all flex items-center gap-4">
+<div class="w-16 h-16 bg-purple-50 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-purple-600">person</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-gray-900">Elena Rivers</h4>
+<p class="text-sm text-gray-400 mb-2">@elena_eco</p>
+<div class="flex gap-4">
+<div>
+<span class="block text-xs text-gray-400 font-medium">Engagement</span>
+<span class="text-sm font-bold text-purple-600">5.5%</span>
+</div>
+<div>
+<span class="block text-xs text-gray-400 font-medium">Reach</span>
+<span class="text-sm font-bold text-purple-600">230k</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-900 p-5 rounded-2xl flex items-center justify-center text-white cursor-pointer hover:bg-black transition-colors">
+<div class="text-center">
+<span class="block text-sm font-bold">Explore 50M+ More</span>
+<span class="text-xs text-gray-400">View detailed reports</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 px-6 text-center">
+<h2 class="text-3xl font-bold mb-16">Enterprise Infrastructure</h2>
+<div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+<div>
+<span class="material-symbols-outlined text-blue-600 text-3xl mb-4">verified_user</span>
+<h4 class="font-bold mb-2">Fake Follower Audit</h4>
+<p class="text-sm text-gray-500">Industry-leading fraud detection for every profile.</p>
+</div>
+<div>
+<span class="material-symbols-outlined text-blue-600 text-3xl mb-4">api</span>
+<h4 class="font-bold mb-2">Robust API</h4>
+<p class="text-sm text-gray-500">Sync data seamlessly with your existing tech stack.</p>
+</div>
+<div>
+<span class="material-symbols-outlined text-blue-600 text-3xl mb-4">group_add</span>
+<h4 class="font-bold mb-2">Team Workspaces</h4>
+<p class="text-sm text-gray-500">Collaborate with ease across departments.</p>
+</div>
+<div>
+<span class="material-symbols-outlined text-blue-600 text-3xl mb-4">payments</span>
+<h4 class="font-bold mb-2">Global Payouts</h4>
+<p class="text-sm text-gray-500">Automated invoicing and tax-compliant payments.</p>
+</div>
+</div>
+</section>
+<section class="py-32 px-6 bg-white border-t border-gray-100">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="text-5xl font-bold mb-8">Ready to grow with Influex?</h2>
+<p class="text-xl text-gray-500 mb-10">Join 1,000+ brands and agencies already scaling their creator marketing.</p>
+<button class="bg-blue-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200">Get Started for Free</button>
+</div>
+</section>
+<footer class="bg-gray-50 pt-20 pb-12 px-6 border-t border-gray-100">
+<div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1">
+<a class="text-xl font-bold tracking-tight text-blue-600 mb-6 block" href="#">INFLUEX</a>
+<p class="text-sm text-gray-500 leading-relaxed max-w-xs">
+                    The data-first influencer marketing platform for modern brands and agencies.
+                </p>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-6">Product</h4>
+<ul class="space-y-4 text-sm text-gray-500">
+<li><a class="hover:text-black transition-colors" href="#">Discovery Engine</a></li>
+<li><a class="hover:text-black transition-colors" href="#">Profile Analytics</a></li>
+<li><a class="hover:text-black transition-colors" href="#">Campaign Monitor</a></li>
+<li><a class="hover:text-black transition-colors" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-6">Resources</h4>
+<ul class="space-y-4 text-sm text-gray-500">
+<li><a class="hover:text-black transition-colors" href="#">Marketing Blog</a></li>
+<li><a class="hover:text-black transition-colors" href="#">Success Stories</a></li>
+<li><a class="hover:text-black transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-black transition-colors" href="#">API Docs</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-6">Company</h4>
+<ul class="space-y-4 text-sm text-gray-500">
+<li><a class="hover:text-black transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-black transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-black transition-colors" href="#">Contact</a></li>
+<li><a class="hover:text-black transition-colors" href="#">Security</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-xs text-gray-400">© 2024 Influex Technologies. All rights reserved.</p>
+<div class="flex gap-8 text-xs font-medium text-gray-400">
+<a class="hover:text-black" href="#">Privacy Policy</a>
+<a class="hover:text-black" href="#">Terms of Service</a>
+<a class="hover:text-black" href="#">Cookies</a>
+</div>
+</div>
+</footer>
+
 </body></html>
