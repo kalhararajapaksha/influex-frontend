@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Influencer Profile Detail View - Influex</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#141414",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#191919",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e0e0e0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-primary dark:text-white transition-colors duration-200">
+<div class="layout-container flex h-full grow flex-col min-h-screen">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e0e0e0] dark:border-[#333] bg-white dark:bg-background-dark px-6 py-3 md:px-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary dark:text-white">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-extrabold tracking-tight">Influex</h2>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-sm font-semibold hover:text-gray-500 transition-colors" href="index.html">Discover</a>
+<a class="text-sm font-semibold hover:text-gray-500 transition-colors" href="#">Campaigns</a>
+<a class="text-sm font-semibold hover:text-gray-500 transition-colors" href="#">Analytics</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<label class="hidden lg:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-[#f2f2f2] dark:bg-[#252525]">
+<div class="text-[#757575] flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 h-full placeholder:text-[#757575] px-4 pl-2 text-sm font-normal" placeholder="Search influencers..."/>
+</div>
+</label>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDkBPhvrZvRLKhVnSNjzcArzAnvLwl707rhIqyVxbLU-3_5B5q7bmhhNgH9w9IGBoAicWVJLcgKFziD3A-DfhxNGimqmEGskttwri9V8RhT0jDWlXqQJLa6X7UwwkjDycpGUuVKQEcaEyr0HMI54CMQWr9K38WUrOiA8-nhc8rI0qp4dCZ3H2jIObHLi7hRgEWWtl6AWdMP0vptzaeeaVS-tzR6ZKx6pvgyxy9p6MTSsb2EzGBPiO8Uty99j5hrj564Ergdik4U55E");'></div>
+</div>
+</header>
+<main class="flex-1 max-w-[1280px] mx-auto w-full px-4 md:px-10 py-8">
+<!-- Profile Header Section -->
+<div class="bg-white dark:bg-[#212121] rounded-xl border border-[#e0e0e0] dark:border-[#333] p-6 md:p-8 mb-8">
+<div class="flex flex-col lg:flex-row gap-8 items-start justify-between">
+<div class="flex flex-col md:flex-row gap-6 items-center md:items-start text-center md:text-left">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-32 w-32 md:h-40 md:w-40 border-4 border-white dark:border-[#333] shadow-sm" data-alt="Influencer profile large photo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAltLwlge5BW2n7gp7ioz1ok6AZJGPcNv7aWSVaMg0Y0_ZvGhA_CkOttbbldAA6r2IF-7ml6lfvYCfT6hgXjFpRcTelGUJEW37NZwzSucIJQcrSpNBGtrfSu0Uj-rjYZ7oUtW8OQ8AIuknJJLXe-9lr2BW8vx2edLWa8bYWiNVu0Rkm9g6oDbSxBxe-uCvZQCUIxbBdAGdt01uHIoMDuHa1tHyYupOSS1feagyRClzg4jFKutAsGbw0L0b6lX4O_jpCZY-91i3K-0E");'></div>
+<div class="absolute bottom-2 right-2 bg-blue-500 text-white rounded-full p-1 border-2 border-white">
+<span class="material-symbols-outlined text-xs leading-none">verified</span>
+</div>
+</div>
+<div class="flex flex-col justify-center gap-2">
+<h1 class="text-3xl font-extrabold tracking-tight">Sarah Jenkins</h1>
+<p class="text-[#757575] text-lg font-medium">@sarahj_lifestyle</p>
+<p class="max-w-lg text-[#555] dark:text-gray-400 font-medium">Digital Creator &amp; Fashion Consultant based in NYC. Specializing in sustainable luxury and high-street fusion.</p>
+<!-- Social Handles Bar -->
+<div class="flex gap-4 mt-2 justify-center md:justify-start">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-[#f2f2f2] dark:bg-[#333] rounded-full">
+<span class="material-symbols-outlined text-base">photo_camera</span>
+<span class="text-sm font-bold">850k</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-[#f2f2f2] dark:bg-[#333] rounded-full">
+<span class="material-symbols-outlined text-base">music_note</span>
+<span class="text-sm font-bold">420k</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-[#f2f2f2] dark:bg-[#333] rounded-full">
+<span class="material-symbols-outlined text-base">video_library</span>
+<span class="text-sm font-bold">150k</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex w-full lg:w-auto flex-col gap-3">
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-primary text-white text-sm font-bold hover:bg-black/90 transition-all">
+                            Add to Campaign
+                        </button>
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-[#f2f2f2] dark:bg-[#333] text-primary dark:text-white text-sm font-bold hover:bg-gray-200 dark:hover:bg-[#444] transition-all">
+                            Contact Influencer
+                        </button>
+</div>
+</div>
+</div>
+<!-- Stats Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-[#212121] rounded-xl p-6 border border-[#e0e0e0] dark:border-[#333]">
+<div class="flex items-center justify-between mb-4">
+<p class="text-[#757575] text-sm font-bold uppercase tracking-wider">Total Followers</p>
+<span class="material-symbols-outlined text-gray-400">group</span>
+</div>
+<div class="flex items-baseline gap-2">
+<p class="text-4xl font-extrabold">1.42M</p>
+<p class="text-[#078807] text-sm font-bold">+2.4%</p>
+</div>
+</div>
+<div class="bg-white dark:bg-[#212121] rounded-xl p-6 border border-[#e0e0e0] dark:border-[#333]">
+<div class="flex items-center justify-between mb-4">
+<p class="text-[#757575] text-sm font-bold uppercase tracking-wider">Avg. Engagement</p>
+<span class="material-symbols-outlined text-gray-400">favorite</span>
+</div>
+<div class="flex items-baseline gap-2">
+<p class="text-4xl font-extrabold">4.85%</p>
+<p class="text-[#078807] text-sm font-bold">+0.3%</p>
+</div>
+</div>
+<div class="bg-white dark:bg-[#212121] rounded-xl p-6 border border-[#e0e0e0] dark:border-[#333]">
+<div class="flex items-center justify-between mb-4">
+<p class="text-[#757575] text-sm font-bold uppercase tracking-wider">Audience Reach</p>
+<span class="material-symbols-outlined text-gray-400">visibility</span>
+</div>
+<div class="flex items-baseline gap-2">
+<p class="text-4xl font-extrabold">890k</p>
+<p class="text-[#e70808] text-sm font-bold">-1.2%</p>
+</div>
+</div>
+</div>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Insights -->
+<div class="lg:col-span-7 flex flex-col gap-8">
+<!-- Credibility Section -->
+<div class="bg-white dark:bg-[#212121] rounded-xl border border-[#e0e0e0] dark:border-[#333] p-8">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-extrabold tracking-tight">Audience Credibility</h2>
+<div class="px-3 py-1 bg-green-100 text-green-700 rounded text-xs font-bold uppercase tracking-tighter">Verified High Quality</div>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-12">
+<div class="relative w-40 h-40">
+<!-- Simplified radial gauge representation -->
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="40" stroke="#f2f2f2" stroke-width="12"></circle>
+<circle cx="50" cy="50" fill="none" r="40" stroke="#141414" stroke-dasharray="210 251.2" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-extrabold">84</span>
+<span class="text-xs font-bold text-[#757575]">SCORE</span>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-1 gap-4 w-full">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-sm font-bold">
+<span>Real Followers</span>
+<span>92%</span>
+</div>
+<div class="w-full bg-[#f2f2f2] h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[92%]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-sm font-bold text-[#757575]">
+<span>Suspicious Accounts</span>
+<span>8%</span>
+</div>
+<div class="w-full bg-[#f2f2f2] h-2 rounded-full overflow-hidden">
+<div class="bg-red-500 h-full w-[8%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Audience Demographics -->
+<div class="bg-white dark:bg-[#212121] rounded-xl border border-[#e0e0e0] dark:border-[#333] p-8">
+<h2 class="text-xl font-extrabold tracking-tight mb-8">Audience Demographics</h2>
+<!-- Age/Gender Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<!-- Age Chart -->
+<div class="flex flex-col">
+<p class="text-sm font-bold text-[#757575] uppercase tracking-widest mb-6">Age Distribution</p>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold w-12">18-24</span>
+<div class="flex-1 h-6 bg-[#f2f2f2] rounded flex overflow-hidden">
+<div class="bg-primary/20 w-[45%] h-full"></div>
+</div>
+<span class="text-xs font-bold">45%</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold w-12">25-34</span>
+<div class="flex-1 h-6 bg-[#f2f2f2] rounded flex overflow-hidden">
+<div class="bg-primary w-[35%] h-full"></div>
+</div>
+<span class="text-xs font-bold">35%</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold w-12">35-44</span>
+<div class="flex-1 h-6 bg-[#f2f2f2] rounded flex overflow-hidden">
+<div class="bg-primary/40 w-[15%] h-full"></div>
+</div>
+<span class="text-xs font-bold">15%</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold w-12">45+</span>
+<div class="flex-1 h-6 bg-[#f2f2f2] rounded flex overflow-hidden">
+<div class="bg-primary/10 w-[5%] h-full"></div>
+</div>
+<span class="text-xs font-bold">5%</span>
+</div>
+</div>
+</div>
+<!-- Location Table -->
+<div class="flex flex-col">
+<p class="text-sm font-bold text-[#757575] uppercase tracking-widest mb-6">Top Locations</p>
+<div class="flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-lg">🇺🇸</span>
+<span class="text-sm font-bold">United States</span>
+</div>
+<span class="text-sm font-bold">52%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-lg">🇬🇧</span>
+<span class="text-sm font-bold">United Kingdom</span>
+</div>
+<span class="text-sm font-bold">18%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-lg">🇨🇦</span>
+<span class="text-sm font-bold">Canada</span>
+</div>
+<span class="text-sm font-bold">12%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-lg">🇦🇺</span>
+<span class="text-sm font-bold">Australia</span>
+</div>
+<span class="text-sm font-bold">8%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Content/Posts -->
+<div class="lg:col-span-5">
+<div class="bg-white dark:bg-[#212121] rounded-xl border border-[#e0e0e0] dark:border-[#333] p-8 h-full">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-xl font-extrabold tracking-tight">Recent Posts</h2>
+<button class="text-sm font-bold text-gray-500 hover:text-black">View All</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Post 1 -->
+<div class="group relative aspect-square rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Recent post image fashion" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC08ZimwH5dZ6imJrgH0qy37wisPEWF2j-1CW81rhDSPGYu6zFw7Lt1GKk2LFWKmF-P39tkv858Lu7mpcqiHrGcmuMveYnPNny-Gwbtwpp8BBHmsXpaoRHXtdla32h3A8nWHwD8s7xN9E91ZqMYniTXzQ2CdKgRBq7rErO-2Vgm60GRx0Hhg-JhJet1vJo643y5lB0Po4ZZlMpesLvXXRYYjUMlX1_kxw76ErMs_oAZ-vIBrTzNIDDj6zeZaLZvz0gbi3cAu_JskGs");'></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 text-white">
+<div class="flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-sm">favorite</span>
+<span>42k</span>
+</div>
+<div class="flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+<span>1.2k</span>
+</div>
+</div>
+</div>
+<!-- Post 2 -->
+<div class="group relative aspect-square rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Recent post image travel" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA4Dtuf_3UEzP96feHpLhOCUDeEqpNmFPTQ4wbtiSbZYSyPj3voLlgemrDdU4uXDpU-0iiMEkNhGcRNMeLO0XaAu9Y9vIBMZYKMc7b3sFjx0WKImTS71UOat8kXiDpt8Ez1XgeVtxiOz1kvGfkt7VBVKBAQamQfnO85TMECB21mEvZcLW6p37WtwmCchX8iX_Rk_Vf5O_cJJbhsJB7vnUxp118AW2Cg6gsjtDFNXQiS_4GBwJ6MOXLbyT6l_EUseYxrIsx1RFHkl5Y");'></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 text-white">
+<div class="flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-sm">favorite</span>
+<span>38k</span>
+</div>
+<div class="flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+<span>950</span>
+</div>
+</div>
+</div>
+<!-- Post 3 -->
+<div class="group relative aspect-square rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Recent post image lifestyle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB-VUKbhb5BOMmYPvCbHOmcasANUdLXQdvcZtrfdefCXIAD1AXp-P6NninAioZ8hD9W1vK22uS2LvL4FZ4pMERJDoQgZxRG5oXVUp6v-8OtDdnK-P4nKk5WnXAe6VW6yLuivd9_bSo0bUc0SQORTsaJT6Chw_d0D8yLmAdspm-IIwkkeBjtqDaBjiDaJreIvr7z-v5zpJsPRXbinu4TDPoxxVpIZrNr3mN9VvOhtfurQLz3stuS7UHvVdnbbVtnWwO9fkPoA8JDfEY");'></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 text-white">
+<div class="flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-sm">favorite</span>
+<span>29k</span>
+</div>
+<div class="flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+<span>820</span>
+</div>
+</div>
+</div>
+<!-- Post 4 -->
+<div class="group relative aspect-square rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Recent post image beauty" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAHxhApJfqBgZHYisduTP_gUdNc06siSKf7jCW8iwqX-0u8tWF7Y-9a_4FBCOUYtAhg-EumEjDrKKoVfJaXpv5Y8ujySiDXDvd69HZ008OyOUsTyW6-dZdyUNgM78s9vEiTgjYU8S2yWBvKK9KHKBPYgNEt6pVj6tTVlBZKAcaH6Na7N3KJFPbRaD8IxSj1GIZgFd5zji5V0vcivwXV6J79l9GaArWZJmpSEnzGwRca0zwk6FPGtyM7qR58uJfkxggtHkga1KJzTt0");'></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 text-white">
+<div class="flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-sm">favorite</span>
+<span>51k</span>
+</div>
+<div class="flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+<span>2.1k</span>
+</div>
+</div>
+</div>
+<!-- Post 5 -->
+<div class="group relative aspect-square rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Recent post image studio" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAoFFXjq_4Ab1F887L-q1IsfKhbRYYra4TUG5qNTwP3fbFsl0S4naJ4JOTAztI0ILA2lKHvhcg9CeQTNSNs8IDgFh7s3xMWXD9A5NwFtGakq27E8dEu8p6ZPEV6JfKqIYaPcJhLZrgRMjBLan_Obu1nJ2dAwOM68oXFAZwgsGj2gjeFSbHnTlX5ZFW1CgLPk-176FsvLeDVcbDR3oc5kWDSkwhAXPiRAViRAp94avJxlVLly1O_hTFT18_IRjKUctfQS7Nl8DLxpMc");'></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 text-white">
+<div class="flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-sm">favorite</span>
+<span>15k</span>
+</div>
+<div class="flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+<span>400</span>
+</div>
+</div>
+</div>
+<!-- Post 6 -->
+<div class="group relative aspect-square rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Recent post image street style" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAeOZ3vj6psvpa80hJnW-ottsWcxXo6DCfVu29WDdNdNpPP7P3D4-HC3WiigxOvqBixeJmduQaQL02-aGTUGdMT8mANDgITwgVqOYpmPoCUa5HDXS7GO9fKlBg6NfDgCDUN5tEU1FIzLYC4hoA4lVxTG3RkwSWTf_LoFxVfdrBOVYbr4txAuiWwF-_GgI6Kp5XhGLoI2CdjoB6xWGSRQ5ojah8S2KAekjC8ZF1G9-hPEukw2Mj3nK06wtn64_zzJb7acJhTpoqdTFw");'></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 text-white">
+<div class="flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-sm">favorite</span>
+<span>64k</span>
+</div>
+<div class="flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+<span>3.4k</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 p-4 bg-[#f2f2f2] dark:bg-[#333] rounded-lg">
+<p class="text-xs font-bold uppercase tracking-widest text-[#757575] mb-2">Campaign Performance Hint</p>
+<p class="text-sm font-medium leading-relaxed">Sarah's engagement peaks between 6:00 PM and 9:00 PM EST. Her video content performs 30% better than static images.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="border-t border-solid border-[#e0e0e0] dark:border-[#333] bg-white dark:bg-background-dark py-8 px-10">
+<div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-4 text-primary dark:text-white opacity-50">
+<div class="size-4">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="text-sm font-bold">© 2024 Influex Analytics</span>
+</div>
+<div class="flex gap-8">
+<a class="text-sm font-medium text-[#757575] hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-sm font-medium text-[#757575] hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-sm font-medium text-[#757575] hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
